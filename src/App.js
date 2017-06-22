@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Router, Route } from 'react-router'
+import createHistory from 'history/createBrowserHistory'
+import IndexHelper from './lib/IndexHelper'
+import Navigation from './components/Navigation'
+
+const history = createHistory()
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Router history={history}>
+        <div className="react-app">
+          <Navigation />
+          <Route exact path="/" component={IndexHelper} />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      </Router>
+    )
   }
 }
 
-export default App;
+export default App
