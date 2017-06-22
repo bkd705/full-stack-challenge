@@ -20,8 +20,12 @@ class Review extends Bookshelf.Model {
     return ['user', 'feedback']
   }
 
-  user() {
-    this.belongsTo('User')
+  creator() {
+    this.belongsTo('User', 'creator_id', 'id')
+  }
+
+  reviewee() {
+    this.belongsTo('User', 'reviewee_id', 'id')
   }
 
   feedback() {
@@ -30,10 +34,10 @@ class Review extends Bookshelf.Model {
 
   /**
    * Method to create a review.
-   * @param {object} review - Review to be created
+   * @param {object} data - Review to be created
    */
-  static async create(review) {
-    const review = new Review(review)
+  static async create(data) {
+    const review = new Review(data)
     return await review.save()
   }
 
@@ -42,7 +46,7 @@ class Review extends Bookshelf.Model {
    * @param {string} id - id to use to find review.
    */
   static async findById(id) {
-    return await review.where('id', id)
+    return await review.where('id', id).fetch()
   }
 
   /**

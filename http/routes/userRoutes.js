@@ -3,6 +3,7 @@ import UserController from '../controllers/UserController'
 
 const app = express()
 
+app.post('/validate', UserController.validate)
 app.get('/', UserController.all)
 app.post('/', UserController.create)
 app.get('/:id', UserController.show)

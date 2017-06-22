@@ -18,7 +18,7 @@ class User extends Bookshelf.Model {
   }
 
   static get dependants() {
-    return ['feedback']
+    return ['feedback', 'review']
   }
 
   feedback() {
@@ -48,7 +48,7 @@ class User extends Bookshelf.Model {
    * @param {string} id - id to use to find user.
    */
   static async findById(id) {
-    return await User.where('id', id)
+    return await User.where('id', id).fetch()
   }
 
   /**
@@ -56,7 +56,7 @@ class User extends Bookshelf.Model {
    * @param {string} email - Email to use to find user.
    */
   static async findByEmail(email) {
-    return await User.where('email', email)
+    return await User.where('email', email).fetch()
   }
 
   /**

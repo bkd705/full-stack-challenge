@@ -7,7 +7,7 @@ export default class UserController {
   static async show(req, res) {
     const userId = req.params.id
 
-    const { password, ...user } = await User.findById(userId)
+    const { attributes: { password, ...user } } = await User.findById(userId)
     if (!user) {
       res.status(404).json({ error: 'No user with that id found.' })
     }
@@ -23,20 +23,20 @@ export default class UserController {
 
   static async create(req, res) {
     // Get password seperate from the rest of the user object so we don't have to exclude it later when outputting
-    const { password, ...user } = await User.create(req.body)
+    const { attributes: { password, ...user } } = await User.create(req.body)
 
     if (!user) {
       res.status(500).json({ error: 'Unable to save user. Unknown error.' })
     }
 
-    const token = jwt.sing(user, config.jwtSecret, { expiresIn: '14 days' })
+    const token = jwt.sign(user, config.jwtSecret, { expiresIn: '14 days' })
     res.send({ user, token })
   }
 
   static async update(req, res) {
     const userId = req.params.id
 
-    const user = await User.find(userId)
+    const user = await User.findById(userId)
     if (!user) {
       res.status(404).json({ error: 'No user with that id found.' })
     }
@@ -51,4 +51,19 @@ export default class UserController {
   }
 
   static async destroy(req, res) {}
+
+  static async validate(req, res) {
+    const user = await User.findByEmail(req.body.email)
+    if (!user) {
+      res.status(404).json({ error: 'No user with that email found.' })
+    }
+
+    const { attributes: { password, ...account } } = user
+    if (bcrypt.compareSync(req.body.password, password)) {
+      const token = jwt.sign(user, config.jwtSecret, { expiresIn: '14 days' })
+      res.send({ user, token })
+    } else {
+      res.status(401).json({ error: 'Incorrect password' })
+    }
+  }
 }
