@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
-import { Router, Route } from 'react-router'
-import createHistory from 'history/createBrowserHistory'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import IndexHelper from './lib/IndexHelper'
 import Navigation from './components/Navigation'
-
-const history = createHistory()
+import routes from './config/routes'
 
 class App extends Component {
   render() {
+    const routeList = routes.map(route =>
+      <Route
+        exact={route.exact}
+        path={route.path}
+        component={route.component}
+        key={route.path}
+      />
+    )
     return (
-      <Router history={history}>
+      <Router>
         <div className="react-app">
           <Navigation />
           <Route exact path="/" component={IndexHelper} />
+          {routeList}
         </div>
       </Router>
     )

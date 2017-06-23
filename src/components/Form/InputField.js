@@ -1,37 +1,16 @@
-import React, { PropTypes as P } from 'react'
-import classnames from 'classnames'
+import React from 'react'
 
-const InputField = ({
-  label,
-  name,
-  value,
-  type,
-  placeholder,
-  onChange,
-  error
-}) => {
+const InputField = ({ name, value, type, placeholder, onChange }) => {
   return (
-    <p
-      className={classnames('control is-expanded', {
-        'has-icon has-icon-right': error
-      })}
-    >
+    <p className="control is-expanded">
       <input
         type={type}
         name={name}
         value={value}
-        className={classnames('input', {
-          'is-danger': error,
-          'is-success': helper
-        })}
+        className="input"
         placeholder={placeholder}
         onChange={onChange}
-        onBlur={onBlur}
       />
-      {error
-        ? <span className="icon is-small"><i className="fa fa-warning" /></span>
-        : ''}
-      {error ? <span className="help is-danger">{error}</span> : ''}
     </p>
   )
 }

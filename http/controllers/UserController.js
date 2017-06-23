@@ -60,7 +60,9 @@ export default class UserController {
 
     const { attributes: { password, ...account } } = user
     if (bcrypt.compareSync(req.body.password, password)) {
-      const token = jwt.sign(user, config.jwtSecret, { expiresIn: '14 days' })
+      const token = jwt.sign(account, config.jwtSecret, {
+        expiresIn: '14 days'
+      })
       res.send({ user, token })
     } else {
       res.status(401).json({ error: 'Incorrect password' })
