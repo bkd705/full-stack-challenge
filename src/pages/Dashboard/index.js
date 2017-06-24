@@ -1,7 +1,8 @@
 import React from 'react'
+import ReviewList from '../../components/ReviewList'
 
 const Dashboard = () => {
-  return <p>Dashboard</p>
+  return <ReviewList />
 }
 
 export default Dashboard
