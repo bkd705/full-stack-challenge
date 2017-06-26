@@ -39,6 +39,8 @@ Bulma.io
 
 First off I'd fix the missing features listed below. Then I'd restructure the way the feedback is done to have a strong parent/child relationship and allow for data / logic to be hoisted so there would be no more hard reloading. Then I would fix the issues on the back-end and abstract / clean up some of the functionality (transforming objects to remove password, write a raw query for the feedback users in reviewscontroller, etc). Then I would write tests, now this is the fun one because I regret not doing TDD on this application. Writing tests at the end when the application is finished seems harder to reason about because I look at it and go "it works, its done" but in reality if I wanted to do future updates it could cause breaking changes, or even version updates. This is reason for testing. I planned on testing (hence the added mocha, chai, enzyme) but I didn't get the time for it. If I started from the beginning again, I would write tests and follow a test driven development practice to make sure that tests are there and everything functions as needed.
 
+Also, I would document more of the code, I wanted to do that at the end, but I ran out of time.
+
 ## Why isn't there redux/mobx/other flux architecture?
 
 I figure this might come up, but I didn't feel the need to use a state container in such a small simplistic application such as this. For me it made more sense just to architect a strong parent/child component architecture (which I didn't in some cases) that allowed for everything to be handled in React local state. Redux and all the other state containers can have a lot of boilerplate, and on a smaller timeframe, with an application that didn't really NEED it, I did not see the advantage of using it.
