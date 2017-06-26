@@ -6,7 +6,7 @@ module.exports = {
     connection: {
       database: 'paytm_development',
       user: 'root',
-      password: 'password'
+      password: 'earbuds'
     }
   },
 

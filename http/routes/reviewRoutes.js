@@ -6,7 +6,7 @@ const app = express()
 app.get('/', ReviewController.all)
 app.post('/', ReviewController.create)
 app.get('/:id', ReviewController.show)
-app.post('/:id', ReviewController.update)
+app.put('/:id', ReviewController.update)
 app.patch('/:id', ReviewController.update)
 
 export default app

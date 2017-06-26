@@ -1,0 +1,33 @@
+.box.feedback {
+  margin-top: 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 0 1px rgba(10, 10, 10, .1);
+  border-radius: 0 !important;
+}
+
+.feedback a {
+  font-size: 12px;
+}
+
+.feedback:last-of-type {
+  margin-bottom: 0;
+}
+
+.feed .post .box.add-feedback {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 3px 3px;
+}
+
+.add-feedback textarea {
+  min-height: 75px;
+}
+
+.feedback-form .control:first-of-type {
+  flex-grow: 1;
+}
+
+.feedback-form .label {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}

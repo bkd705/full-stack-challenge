@@ -20,29 +20,30 @@ class Feedback extends Bookshelf.Model {
     return ['user', 'review']
   }
 
-  users() {
-    return this.hasMany('User')
+  user() {
+    return this.belongsTo('User', 'creator_id', 'id')
   }
 
   review() {
-    return this.belongsTo('Review')
+    return this.belongsTo('Review', 'review_id', 'id')
   }
 
   /**
    * Method to create feedback.
-   * @param {object} feedback - Feedback to be created
+   * @param {object} data - Feedback to be created
    */
-  static async create(feedback) {
-    const feedback = new Feedback(feedback)
+  static async create(data) {
+    const feedback = new Feedback(data)
     return await feedback.save()
   }
 
   /**
    * Method for finding feedback using its unique id.
    * @param {string} id - id to use to find feedback.
+   * @param {object} opts - options used in fetch
    */
-  static async findById(id) {
-    return await Feedback.where('id', id)
+  static async findById(id, opts) {
+    return await Feedback.where('id', id).fetch(opts)
   }
 
   /**
