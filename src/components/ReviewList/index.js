@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ReviewItem from './ReviewItem'
+import './reviewlist.css'
 
 class ReviewList extends Component {
   state = {
@@ -26,8 +27,10 @@ class ReviewList extends Component {
     )
 
     return (
-      <div className="review-list">
-        {reviewItems}
+      <div className="container container--review">
+        <div className="reviews">
+          {reviewItems}
+        </div>
       </div>
     )
   }

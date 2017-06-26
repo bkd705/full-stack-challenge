@@ -11,7 +11,7 @@ const app = express()
 app.use(bodyParser.json())
 
 // Setup routes for application
-app.use('/users', userRoutes)
+app.use('/employees', userRoutes)
 app.use('/reviews', reviewRoutes)
 app.use('/feedback', feedbackRoutes)
 

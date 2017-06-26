@@ -5,6 +5,7 @@ import checkAuth from '../../lib/checkAuth'
 const AuthLinks = () =>
   <div className="nav-right nav-menu is-active">
     <Link to="/" className="nav-item">Dashboard</Link>
+    <Link to="/employees" className="nav-item">Employees</Link>
   </div>
 
 const UnAuthLinks = () =>
@@ -18,13 +19,15 @@ const Navigation = () => {
 
   return (
     <nav className="nav">
-      <div className="nav-left">
-        <Link to="/" className="nav-item">
-          Paytm
-        </Link>
-      </div>
+      <div className="container">
+        <div className="nav-left">
+          <Link to="/" className="nav-item">
+            Paytm
+          </Link>
+        </div>
 
-      {links}
+        {links}
+      </div>
     </nav>
   )
 }

@@ -46,9 +46,10 @@ class User extends Bookshelf.Model {
   /**
    * Method for finding a user using their unique id
    * @param {string} id - id to use to find user.
+   * @param {object} opts - options used in fetch
    */
-  static async findById(id) {
-    return await User.where('id', id).fetch()
+  static async findById(id, opts) {
+    return await User.where('id', id).fetch(opts)
   }
 
   /**

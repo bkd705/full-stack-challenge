@@ -2,7 +2,9 @@ import Feedback from '../models/Feedback'
 
 export default class FeedbackController {
   static async show(req, res) {
-    const feedback = await Feedback.findById(req.params.id)
+    const feedback = await Feedback.findById(req.params.id, {
+      withRelated: ['review', 'user']
+    })
     if (!feedback) {
       res.status(404).json({ error: 'No feedback with that id found.' })
     }
@@ -11,7 +13,9 @@ export default class FeedbackController {
   }
 
   static async all(req, res) {
-    const feedback = await Feedback.fetchAll()
+    const feedback = await Feedback.fetchAll({
+      withRelated: ['review', 'user']
+    })
 
     res.send({ feedback })
   }
@@ -20,7 +24,7 @@ export default class FeedbackController {
     const feedback = await Feedback.create(req.body)
 
     if (!feedback) {
-      res.status(500).json({ error: 'Unkown error. Feedback not created.' })
+      res.status(500).json({ error: 'Unknown error. Feedback not created.' })
     }
 
     res.send({ feedback })
@@ -34,7 +38,7 @@ export default class FeedbackController {
 
     const result = await Feedback.update(feedback, req.body)
     if (!result) {
-      res.status(500).json({ error: 'Unkown error. Feedback not saved' })
+      res.status(500).json({ error: 'Unknown error. Feedback not saved' })
     }
 
     res.send({ result })
@@ -48,7 +52,7 @@ export default class FeedbackController {
 
     const isDeleted = await Feedback.delete(feedback)
     if (!isDelete) {
-      res.status(500).json({ error: 'Unkown error. Feedback not deleted' })
+      res.status(500).json({ error: 'Unknown error. Feedback not deleted' })
     }
 
     res.send({ message: 'Feedback deleted' })

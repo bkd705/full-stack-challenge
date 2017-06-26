@@ -21,15 +21,15 @@ class Review extends Bookshelf.Model {
   }
 
   creator() {
-    this.belongsTo('User', 'creator_id', 'id')
+    return this.belongsTo('User', 'creator_id', 'id')
   }
 
   reviewee() {
-    this.belongsTo('User', 'reviewee_id', 'id')
+    return this.belongsTo('User', 'reviewee_id', 'id')
   }
 
   feedback() {
-    this.hasMany('Feedback')
+    return this.hasMany('Feedback')
   }
 
   /**
@@ -44,9 +44,10 @@ class Review extends Bookshelf.Model {
   /**
    * Method for finding a review using its unique id.
    * @param {string} id - id to use to find review.
+   * @param {object} opts - options used in fetch
    */
-  static async findById(id) {
-    return await review.where('id', id).fetch()
+  static async findById(id, opts) {
+    return await review.where('id', id).fetch(opts)
   }
 
   /**

@@ -20,8 +20,8 @@ class Feedback extends Bookshelf.Model {
     return ['user', 'review']
   }
 
-  users() {
-    return this.hasMany('User')
+  user() {
+    return this.belongsTo('User', 'creator_id', 'id')
   }
 
   review() {
@@ -40,9 +40,10 @@ class Feedback extends Bookshelf.Model {
   /**
    * Method for finding feedback using its unique id.
    * @param {string} id - id to use to find feedback.
+   * @param {object} opts - options used in fetch
    */
-  static async findById(id) {
-    return await Feedback.where('id', id).fetch()
+  static async findById(id, opts) {
+    return await Feedback.where('id', id).fetch(opts)
   }
 
   /**
