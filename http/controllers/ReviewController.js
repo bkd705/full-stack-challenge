@@ -42,7 +42,7 @@ export default class ReviewController {
   }
 
   static async update(req, res) {
-    const review = Review.findById(req.params.id)
+    const review = await Review.findById(req.params.id)
     if (!review) {
       res.status(404).json({ error: 'No review with that id found' })
     }

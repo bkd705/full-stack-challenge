@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Feedback from '../Feedback'
 import FeedbackForm from '../Feedback/FeedbackForm'
 
@@ -10,7 +11,13 @@ const ReviewItem = ({ review }) => {
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{review.title}</strong>{' '}
+                <strong>{review.title}</strong>{' '}{' '}
+                <Link
+                  to={`reviews/${review.id}/update`}
+                  className="button is-info is-small"
+                >
+                  Update
+                </Link>
                 <br />
 
                 {review.review}

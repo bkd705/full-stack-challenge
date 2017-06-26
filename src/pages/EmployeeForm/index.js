@@ -1,8 +1,8 @@
 import React from 'react'
-import './createemployee.css'
+import './employee.css'
 import EmployeeForm from '../../components/EmployeeForm'
 
-const CreateEmployee = () => {
+const Employee = () => {
   return (
     <div className="create-employee-page">
       <h2 className="subtitle">Create Employee</h2>
@@ -11,4 +11,4 @@ const CreateEmployee = () => {
   )
 }
 
-export default CreateEmployee
+export default Employee

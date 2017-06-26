@@ -1,8 +1,8 @@
 import React from 'react'
-import './createreview.css'
+import './review.css'
 import ReviewForm from '../../components/ReviewForm'
 
-const CreateReview = () => {
+const Review = () => {
   return (
     <div className="create-review-page">
       <h2 className="subtitle">Create Review</h2>
@@ -11,4 +11,4 @@ const CreateReview = () => {
   )
 }
 
-export default CreateReview
+export default Review

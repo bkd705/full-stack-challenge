@@ -47,7 +47,7 @@ class Review extends Bookshelf.Model {
    * @param {object} opts - options used in fetch
    */
   static async findById(id, opts) {
-    return await review.where('id', id).fetch(opts)
+    return await Review.where('id', id).fetch(opts)
   }
 
   /**
@@ -56,7 +56,7 @@ class Review extends Bookshelf.Model {
    * @param {object} changes - New changes to update a review with
    */
   static async update(review, changes) {
-    return await update.save(changes)
+    return await review.save(changes)
   }
 
   /**

@@ -1,7 +1,7 @@
 import React from 'react'
 import Employees from '../pages/Employees'
-import CreateReview from '../pages/CreateReview'
-import CreateEmployee from '../pages/CreateEmployee'
+import ReviewForm from '../pages/ReviewForm'
+import EmployeeForm from '../pages/EmployeeForm'
 
 const TestComponent = () => <p>Test</p>
 
@@ -14,27 +14,22 @@ const routes = [
   {
     exact: true,
     path: '/employees/create',
-    component: CreateEmployee
+    component: EmployeeForm
   },
   {
     exact: true,
     path: '/employees/:id/update',
-    component: TestComponent
-  },
-  {
-    exact: true,
-    path: '/reviews',
-    component: TestComponent
+    component: EmployeeForm
   },
   {
     exact: true,
     path: '/reviews/create',
-    component: CreateReview
+    component: ReviewForm
   },
   {
     exact: true,
     path: '/reviews/:id/update',
-    component: TestComponent
+    component: ReviewForm
   }
 ]
 
