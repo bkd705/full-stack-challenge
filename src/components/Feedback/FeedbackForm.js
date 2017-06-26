@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
-import InputField from '../Form/InputField'
+import decode from 'jwt-decode'
+import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 
 class FeedbackForm extends Component {
   state = {
-    creator: '',
-    title: '',
+    creator_id: '',
+    review_id: '',
     feedback: ''
+  }
+
+  componentDidMount() {
+    const creator_id = decode(localStorage.getItem('paytm_user_token')).id
+
+    this.setState({
+      creator_id,
+      review_id: this.props.reviewId
+    })
   }
 
   onChange = e => {
@@ -14,30 +25,35 @@ class FeedbackForm extends Component {
     })
   }
 
-  onSubmit = e => {}
+  onSubmit = e => {
+    e.preventDefault()
+    this.submitReview()
+  }
+
+  submitReview = async () => {
+    const response = await axios.post('/feedback', this.state)
+    if (response.status === 200) {
+      // no access to parent state and ran out of time to rework component structure
+      // so forceful page reload is used to get comment to show up
+      // defeats purpose of the whole "client-side spa" jazz kind of
+      window.location = '/'
+    }
+  }
 
   render() {
-    const { title, feedback } = this.state
+    const { feedback } = this.state
     return (
       <article className="media">
         <div className="media-content">
           <form onSubmit={this.onSubmit} className="feedback-form">
             <label className="label">Your comment</label>
-            <div className="field">
-              <InputField
-                name="title"
-                value={title}
-                placeholder="Title..."
-                onChange={this.onChange}
-              />
-            </div>
             <div className="field is-grouped">
               <p className="control">
                 <textarea
                   name="feedback"
                   value={feedback}
                   className="textarea"
-                  placeholder="Comment..."
+                  placeholder="Feedback..."
                   onChange={this.onChange}
                 />
               </p>
@@ -55,4 +71,4 @@ class FeedbackForm extends Component {
   }
 }
 
-export default FeedbackForm
+export default withRouter(FeedbackForm)

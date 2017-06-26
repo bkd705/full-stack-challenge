@@ -28,6 +28,7 @@ class Employees extends Component {
             <th>ID</th>
             <th>Email</th>
             <th>Role</th>
+            <th />
           </tr>
         </thead>
         <tbody>

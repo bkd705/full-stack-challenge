@@ -23,7 +23,7 @@ const ReviewItem = ({ review }) => {
       <Feedback feedback={review.feedback} />
 
       <div className="box add-feedback">
-        <FeedbackForm />
+        <FeedbackForm reviewId={review.id} />
       </div>
     </div>
   )

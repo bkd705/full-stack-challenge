@@ -6,6 +6,8 @@ const AuthLinks = () =>
   <div className="nav-right nav-menu is-active">
     <Link to="/" className="nav-item">Dashboard</Link>
     <Link to="/employees" className="nav-item">Employees</Link>
+
+    <Link to="/reviews/create" className="nav-item">Add Review</Link>
   </div>
 
 const UnAuthLinks = () =>

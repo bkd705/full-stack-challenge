@@ -1,5 +1,7 @@
 import React from 'react'
 import Employees from '../pages/Employees'
+import CreateReview from '../pages/CreateReview'
+import CreateEmployee from '../pages/CreateEmployee'
 
 const TestComponent = () => <p>Test</p>
 
@@ -12,7 +14,7 @@ const routes = [
   {
     exact: true,
     path: '/employees/create',
-    component: TestComponent
+    component: CreateEmployee
   },
   {
     exact: true,
@@ -27,7 +29,7 @@ const routes = [
   {
     exact: true,
     path: '/reviews/create',
-    component: TestComponent
+    component: CreateReview
   },
   {
     exact: true,

@@ -1,0 +1,20 @@
+.create-review-page {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-review-page form {
+  width: 500px;
+}
+
+.create-review-page form input {
+  margin: 10px 0;
+}
+
+.create-review-page form button[type="submit"] {
+  width: 100%;
+}
