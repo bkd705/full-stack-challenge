@@ -17,7 +17,7 @@ class LoginForm extends Component {
 
   onSubmit = async e => {
     e.preventDefault()
-    const response = await axios.post('/users/validate', this.state)
+    const response = await axios.post('/employees/validate', this.state)
     if (response.data.token) {
       localStorage.setItem('paytm_user_token', response.data.token)
       this.props.history.push('/')
@@ -46,7 +46,9 @@ class LoginForm extends Component {
         />
 
         <p className="control">
-          <button type="submit" className="button is-primary">Login</button>
+          <button type="submit" className="button is-primary">
+            Login
+          </button>
         </p>
       </form>
     )
